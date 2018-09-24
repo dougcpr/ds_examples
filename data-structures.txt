@@ -1,0 +1,7 @@
+1.) Stack <-- implement using an Array
+2.) Queue <-- implement using an Array
+3.) Linked List <-- Create your own node and linked list classes
+4.) Research Tree Traversal techniques (inorder preorder postorder)
+5.) Look into depth first search and Breadth first search in reference to Trees and Graphs
+6.) Binary Search Tree <-- Create your own classes
+7.) Research Graph's and the concepts of edges and verticies
