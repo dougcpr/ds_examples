@@ -23,20 +23,21 @@ const matrix = [[0, 1, 1, 0], [1, 0, 1, 0], [1, 1, 0, 1], [0, 0, 1, 0]];
 function determineDistanceBetweenNodes(nodeOne, nodeTwo) {
     distance[nodeOne] = 0
     visited[nodeOne] = true;
-    while(visited.includes(false)) {
-        matrix.forEach((node, nodeIndex) => {
-            node.forEach((connection, edge) => {
-                if (!visited[edge] && connection) {
-                    distance[edge] += 1;
-                    visited[edge] = true;
-                }
-            })
-            // if the node in question is being observed and the nodeTwo hasn't been detected, add 1 to the distance
-            // because that assumes there is a connection
-            if (!visited[nodeTwo] && nodeIndex === nodeOne) {
-                distance[nodeTwo] += 1;
+    matrix.forEach((node, nodeIndex) => {
+        node.forEach((connection, edge) => {
+            if (!visited[edge] && connection) {
+                distance[edge] += 1;
+                visited[edge] = true;
             }
         })
+        // if the node in question is being observed and the nodeTwo hasn't been detected, add 1 to the distance
+        // because that assumes there is a connection
+        if (!visited[nodeTwo] && nodeIndex === nodeOne) {
+            distance[nodeTwo] += 1;
+        }
+    })
+    if (!visited[nodeTwo]) {
+        distance[nodeTwo] = undefined;
     }
     console.log(distance);
     console.log(`Distance between nodeOne and nodeTwo is: ${distance[nodeTwo]}`)
@@ -44,5 +45,4 @@ function determineDistanceBetweenNodes(nodeOne, nodeTwo) {
 
 // nodes are defined by their index in the matrix
 determineDistanceBetweenNodes(1, 3)
-
 
