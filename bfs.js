@@ -10,15 +10,18 @@ function bfs(graph, startNode) {
     while (queue.length > 0) {
         let node = queue.shift();
         console.log(node);
-
+        // check the adjacent nodes
         let adjacentNodes = graph[node];
-        for (let i = 0; i < adjacentNodes.length; i++) {
-            let adjacentNode = adjacentNodes[i];
-            if (!visited[adjacentNode]) {
+        // loop over every adjacent node and see if it was visited
+        adjacentNodes.forEach(adjacentNode => {
+            if(!visited[adjacentNode]) {
                 visited[adjacentNode] = true;
+                // if it was visited, like B for A
+                // push it into the queue so the adjacent nodes
+                // of that can be visited
                 queue.push(adjacentNode);
             }
-        }
+        })
     }
 }
 
@@ -31,4 +34,4 @@ let graph = {
     'F': []
 };
 
-bfs(graph, 'B');
+bfs(graph, 'A');
